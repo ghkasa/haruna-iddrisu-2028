@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Haruna Iddrisu 2028: The NDC Digital Campaign&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&amp;family=Inter:wght@400;600&amp;family=Oswald:wght@500;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Chosen Palette: "NDC Vanguard" - Directly using the official NDC party colors (Green #006600, Red #CC0000, Black #000000, White #FFFFFF) to ensure brand consistency and resonate with party identity. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: A tab-based single-page application (SPA) was chosen for optimal user experience, transforming the linear report into an interactive dashboard. This structure allows stakeholders to easily navigate between the core components of the campaign strategy (Vision, Pillars, Brand, Timeline, and Analytics) without being overwhelmed by a long scroll. The non-linear navigation encourages exploration and makes the dense information highly digestible. Key interactions include tab-switching, accordions for detailed strategies, and an interactive chart to visualize platform priorities. This design prioritizes clarity and engagement, making the strategic pitch more compelling and memorable. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Visualization &amp; Content Choices: Report Info: Executive Summary -&gt; Goal: Inform -&gt; Viz/Method: Hero section with typography -&gt; Interaction: Static -&gt; Justification: Sets a powerful tone. | Report Info: Campaign Pillars -&gt; Goal: Organize -&gt; Viz/Method: Interactive accordion -&gt; Interaction: Click-to-expand -&gt; Justification: Manages dense text effectively. Uses HTML/CSS/JS. | Report Info: Visual Identity -&gt; Goal: Visualize -&gt; Viz/Method: Styled HTML elements -&gt; Interaction: Static -&gt; Justification: Provides a tangible brand preview. | Report Info: Implementation Plan -&gt; Goal: Change -&gt; Viz/Method: HTML/CSS interactive timeline -&gt; Interaction: Click-to-highlight -&gt; Justification: Makes the phased rollout intuitive. | Report Info: Platform Prioritization -&gt; Goal: Compare -&gt; Viz/Method: Bar Chart -&gt; Interaction: Hover tooltips -&gt; Justification: Visualizes strategic focus concretely. Library: Chart.js/Canvas. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root { --ndc-green: #006600; --ndc-red: #CC0000; --ndc-black: #000000; --ndc-white: #FFFFFF; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Inter', sans-serif; background-color: #f7fafc; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.font-display { font-family: 'Montserrat', sans-serif; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.font-accent { font-family: 'Oswald', sans-serif; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-link {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.75rem 1.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 4px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: rgba(255, 255, 255, 0.8);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-link.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom-color: var(--ndc-red);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--ndc-white);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-link:hover { background-color: rgba(255, 255, 255, 0.1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.accordion-header { cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.timeline-item { cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.timeline-item.active .timeline-dot { background-color: var(--ndc-red); transform: scale(1.5); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.timeline-item.active .timeline-title { color: var(--ndc-green); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.chart-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative; width: 100%; max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto; margin-right: auto; height: 45vh; max-height: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-slate-100"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-[var(--ndc-black)] text-white shadow-lg sticky top-0 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto flex flex-col md:flex-row justify-between items-center p-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="font-accent font-bold text-2xl p-2 text-center md:text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Haruna Iddrisu &lt;span class="text-[var(--ndc-red)]"&gt;2028&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="flex flex-wrap justify-center font-semibold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a class="nav-link active" data-target="vision"&gt;Our Vision&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a class="nav-link" data-target="pillars"&gt;Campaign Pillars&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a class="nav-link" data-target="brand"&gt;The NDC Brand&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a class="nav-link" data-target="timeline"&gt;Timeline&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a class="nav-link" data-target="analytics"&gt;Analytics&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main id="content-container" class="container mx-auto p-4 md:p-8"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Vision Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="vision" class="content-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center bg-white p-8 md:p-12 rounded-xl shadow-xl border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="font-display text-4xl md:text-6xl font-black text-[var(--ndc-green)] mb-4"&gt;The Digital Path to Victory&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>This interactive application outlines a comprehensive, digitally-centric campaign strategy to amplify Haruna Iddrisu's message, connect directly with voters, and build unassailable momentum towards the presidency, all powered by the strength and values of the NDC.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-accent text-2xl text-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-[var(--ndc-green)] p-6 rounded-lg shadow-md"&gt;"Experience. Vision. Progress."&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-[var(--ndc-red)] p-6 rounded-lg shadow-md"&gt;"Leading Ghana Forward, The NDC Way."&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-[var(--ndc-black)] p-6 rounded-lg shadow-md"&gt;"The Future is Now."&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="mt-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;h2 class="font-display text-3xl font-bold text-[var(--ndc-green)] mb-4"&gt;Core Message Framework&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;p class="text-slate-700 max-w-4xl mx-auto mb-8"&gt;Our narrative is built on five pillars of trust and progress, designed to resonate with every Ghanaian and reinforce the NDC's commitment to the people.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-wrap justify-center gap-4 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-50 p-4 rounded-lg shadow-md border-l-4 border-[var(--ndc-red)] w-full md:w-2/5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-lg text-[var(--ndc-black)]"&gt;Experience &amp; Leadership&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600"&gt;Leveraging his extensive background to lead the nation under the NDC's proven principles.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-50 p-4 rounded-lg shadow-md border-l-4 border-[var(--ndc-green)] w-full md:w-2/5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-lg text-[var(--ndc-black)]"&gt;Vision for Prosperity&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600"&gt;Driving economic growth and sustainable development aligned with the NDC's manifesto.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-50 p-4 rounded-lg shadow-md border-l-4 border-[var(--ndc-green)] w-full md:w-2/5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-lg text-[var(--ndc-black)]"&gt;Unity &amp; Inclusivity&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600"&gt;A leader for all Ghanaians, fostering national cohesion while strengthening party unity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-50 p-4 rounded-lg shadow-md border-l-4 border-[var(--ndc-red)] w-full md:w-2/5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-lg text-[var(--ndc-black)]"&gt;Accountability &amp; Governance&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600"&gt;A steadfast commitment to transparency and responsible stewardship, reflecting core NDC values.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Pillars Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="pillars" class="content-section hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="font-display text-4xl md:text-5xl font-bold text-[var(--ndc-green)] mb-2"&gt;Campaign Pillars&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg text-slate-600 max-w-3xl mx-auto"&gt;Our strategy is built upon three interconnected pillars designed to shape perception, drive engagement, and build a robust campaign infrastructure. Click each pillar to explore the detailed approach.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="accordion-container" class="space-y-4 max-w-4xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Brand Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="brand" class="content-section hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="font-display text-4xl md:text-5xl font-bold text-[var(--ndc-green)] mb-2"&gt;The NDC Visual Identity&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg text-slate-600 max-w-3xl mx-auto"&gt;Our brand is a modern interpretation of the NDC's powerful identity, projecting strength, tradition, and forward-thinking leadership.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-8 rounded-xl shadow-xl border border-slate-200 max-w-5xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-display text-2xl text-[var(--ndc-green)] mb-4 border-b-2 border-[var(--ndc-red)] pb-2"&gt;NDC Color Palette&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600 mb-4"&gt;The official party colors will be used strategically to evoke our core values: growth, sacrifice, unity, and peace.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex space-x-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-16 h-16 rounded-full bg-[var(--ndc-green)] shadow-md flex items-center justify-center text-white text-xs font-mono"&gt;#006600&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-16 h-16 rounded-full bg-[var(--ndc-red)] shadow-md flex items-center justify-center text-white text-xs font-mono"&gt;#CC0000&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-16 h-16 rounded-full bg-[var(--ndc-black)] shadow-md flex items-center justify-center text-white text-xs font-mono"&gt;#000000&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-16 h-16 rounded-full bg-[var(--ndc-white)] shadow-md flex items-center justify-center text-black text-xs font-mono ring-1 ring-slate-200"&gt;#FFFFFF&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-display text-2xl text-[var(--ndc-green)] mb-4 border-b-2 border-[var(--ndc-red)] pb-2"&gt;Campaign Typography&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600 mb-4"&gt;Our fonts are chosen for authority, clarity, and a unique character that represents our movement.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="font-display font-black text-4xl text-[var(--ndc-black)]"&gt;Montserrat&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-slate-500 mb-2"&gt;Used for headings to convey strength and modernity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-lg text-slate-700"&gt;Inter is for body text, ensuring maximum readability.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="font-accent text-4xl text-[var(--ndc-red)]"&gt;OSWALD&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;p class="text-sm text-slate-500"&gt;Used for impactful slogans and calls to action.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;h3 class="font-display text-2xl text-[var(--ndc-green)] mb-4 border-b-2 border-[var(--ndc-red)] pb-2"&gt;Imagery &amp; Tone&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;p class="text-slate-600 mb-6"&gt;Our visual storytelling will be authentic and powerful, capturing the essence of Haruna Iddrisu's leadership within the NDC.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-semibold text-lg text-center text-[var(--ndc-green)]"&gt;Leadership &amp; Vision&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-slate-600 text-center"&gt;Dynamic photos conveying confidence and a clear direction, always rooted in NDC values.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-semibold text-lg text-center text-[var(--ndc-green)]"&gt;Empathy &amp; Connection&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-slate-600 text-center"&gt;Authentic images of genuine interaction with ordinary Ghanaians, reflecting the party's grassroots connection.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div class="bg-slate-50 p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-semibold text-lg text-center text-[var(--ndc-green)]"&gt;Action &amp; Progress&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-slate-600 text-center"&gt;Images of engagement in development, innovation, and national progress, showcasing NDC's commitment.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Timeline Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="timeline" class="content-section hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="font-display text-4xl md:text-5xl font-bold text-[var(--ndc-green)] mb-2"&gt;Implementation Plan&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg text-slate-600 max-w-3xl mx-auto"&gt;The campaign will be executed in three strategic phases, building from foundation to full mobilization.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="w-full max-w-5xl mx-auto px-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="absolute top-1/2 left-0 w-full h-1 bg-slate-300 -translate-y-1/2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="timeline-container" class="relative flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="timeline-details" class="mt-12 bg-white p-8 rounded-xl shadow-xl border border-slate-200 min-h-[250px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Analytics Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="analytics" class="content-section hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="font-display text-4xl md:text-5xl font-bold text-[var(--ndc-green)] mb-2"&gt;Digital Platform Strategy&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg text-slate-600 max-w-3xl mx-auto"&gt;Our strategy prioritizes platforms based on their potential to reach key demographics and achieve specific campaign objectives. This chart visualizes our strategic focus.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-4 md:p-8 rounded-xl shadow-xl border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="chart-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;canvas id="socialMediaChart"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">document.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const navLinks = document.querySelectorAll('.nav-link');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const contentSections = document.querySelectorAll('.content-section');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const accordionContainer = document.getElementById('accordion-container');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const timelineContainer = document.getElementById('timeline-container');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const timelineDetailsContainer = document.getElementById('timeline-details');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const appData = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>pillars: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Strategic Online PR &amp; Media Relations',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content: 'This pillar focuses on shaping public perception through credible online channels, ensuring Haruna Iddrisu\'s message resonates with authority and widespread acceptance within the NDC framework.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>points: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Proactive Media Outreach:&lt;/strong&gt; Regularly pitch policy positions and parliamentary achievements to leading online news portals, emphasizing his role within the NDC.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Influencer Engagement:&lt;/strong&gt; Collaborate with reputable influencers aligned with NDC values to co-create content like interviews and policy discussions.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Crisis Management:&lt;/strong&gt; Implement social listening and a rapid response protocol to control the narrative and reinforce the integrity of Haruna Iddrisu and the party.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Dynamic Social Media Engagement',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content: 'This pillar is about direct, authentic, and consistent interaction across key platforms to build a loyal grassroots movement and mobilize the NDC base.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>points: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Platform Prioritization:&lt;/strong&gt; Tailor content for Facebook (broad reach), Twitter/X (policy), Instagram/TikTok (youth), and YouTube (in-depth discussions).',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Varied Content Strategy:&lt;/strong&gt; Create a mix of vision-driven content, behind-the-scenes moments, interactive Q&amp;As, and testimonials rooted in NDC principles.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Community Management:&lt;/strong&gt; Deploy a dedicated team and train digital volunteers to engage supporters and foster vibrant online communities.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Robust Digital Infrastructure',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content: 'This pillar provides the foundational tools and data analytics for the entire campaign, ensuring efficiency, security, and data-driven decisions that benefit the party\'s goals.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>points: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Professional Campaign Website:&lt;/strong&gt; A central, mobile-responsive hub for biographies, policies aligned with the NDC manifesto, news, and volunteer sign-ups.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Email &amp; SMS Campaigns:&lt;/strong&gt; Build a subscriber list for personalized communication, event invitations, and direct calls to action.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'&lt;strong&gt;Data Analytics &amp; Optimization:&lt;/strong&gt; Use analytics to track performance, A/B test messages, and refine voter targeting to maximize impact.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>timeline: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Phase 1: Foundation',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: 'Initial 6-12 Months',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>details: 'The goal of this initial phase is to build a strong digital foundation rooted in NDC branding and generate widespread awareness of the campaign.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>actions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Launch professional campaign website and optimize all social media profiles with NDC branding.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Develop a master content calendar pushing biographical and vision-based content aligned with party principles.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Begin media relations groundwork and identify key, party-aligned influencers for collaboration.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Phase 2: Engagement',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: 'Mid-Campaign',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>details: 'During this phase, we will amplify our message, increase direct voter and party-member engagement, and solidify support through interactive outreach.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>actions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Dramatically increase social media activity with live Q&amp;A sessions and virtual town halls.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Launch targeted online advertising campaigns to reach specific undecided demographics and mobilize the base.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Recruit and train a robust network of digital volunteers to amplify messages with party discipline.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 3,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Phase 3: Mobilization',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: 'Final 6 Months',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>details: 'The final phase is focused on converting engagement into votes. All efforts will be directed towards mobilization and ensuring maximum voter turnout for an NDC victory.',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>actions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Intensify all digital outreach with a strong "Get Out The Vote" (GOTV) message.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Run online campaigns focused on voter registration and providing polling information.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Utilize real-time election day updates and digital support to maximize NDC voter turnout.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function switchTab(targetId) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>navLinks.forEach(link =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>link.classList.toggle('active', link.getAttribute('data-target') === targetId);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>contentSections.forEach(section =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>section.classList.toggle('hidden', section.id !== targetId);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (targetId === 'analytics') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderChart();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>navLinks.forEach(link =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>link.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>switchTab(link.getAttribute('data-target'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createAccordions() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!accordionContainer) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>accordionContainer.innerHTML = appData.pillars.map((pillar) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-lg shadow-md border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="accordion-header flex justify-between items-center p-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="font-display text-xl text-[var(--ndc-green)]"&gt;${pillar.title}&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="transform transition-transform duration-300 text-2xl text-[var(--ndc-red)]"&gt;&amp;#x2B9F;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="accordion-content px-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="pt-0 pb-4 text-slate-600"&gt;${pillar.content}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-2 pb-5 list-disc list-inside text-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${pillar.points.map(point =&gt; `&lt;li&gt;${point}&lt;/li&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const accordionHeaders = document.querySelectorAll('.accordion-header');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>accordionHeaders.forEach(header =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>header.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const content = header.nextElementSibling;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const icon = header.querySelector('span');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (content.style.maxHeight) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>content.style.maxHeight = null;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>icon.style.transform = 'rotate(0deg)';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.querySelectorAll('.accordion-content').forEach(c =&gt; c.style.maxHeight = null);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.querySelectorAll('.accordion-header span').forEach(i =&gt; i.style.transform = 'rotate(0deg)');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>content.style.maxHeight = content.scrollHeight + "px";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>icon.style.transform = 'rotate(90deg)';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createTimeline() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!timelineContainer || !timelineDetailsContainer) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>timelineContainer.innerHTML = appData.timeline.map(item =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="timeline-item flex-1 text-center" data-id="${item.id}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-dot w-6 h-6 rounded-full bg-[var(--ndc-green)] mx-auto transition-all duration-300 border-4 border-slate-100"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="timeline-title font-semibold text-slate-600 mt-2"&gt;${item.title}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const timelineItems = document.querySelectorAll('.timeline-item');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showTimelineDetails(id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const item = appData.timeline.find(d =&gt; d.id == id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!item) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>timelineDetailsContainer.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-display text-2xl text-[var(--ndc-green)]"&gt;${item.title} &lt;span class="font-accent text-lg text-slate-500 ml-2"&gt;(${item.duration})&lt;/span&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="my-4 text-slate-700"&gt;${item.details}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="space-y-2 list-disc list-inside text-slate-600 marker:text-[var(--ndc-red)]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>${item.actions.map(action =&gt; `&lt;li&gt;${action}&lt;/li&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>timelineItems.forEach(el =&gt; el.classList.toggle('active', el.dataset.id == id));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>timelineItems.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>item.addEventListener('click', () =&gt; showTimelineDetails(item.dataset.id));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>showTimelineDetails(1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let socialChart = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderChart() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ctx = document.getElementById('socialMediaChart');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!ctx) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (socialChart) socialChart.destroy();</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>socialChart = new Chart(ctx.getContext('2d'), {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>type: 'bar',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>data: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>labels: ['Facebook', 'YouTube', 'Instagram', 'Twitter/X', 'TikTok'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>datasets: [{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>label: 'Strategic Focus (Score)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: [90, 75, 80, 70, 85],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>backgroundColor: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'#006600',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'#CC0000',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'#006600',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'#000000',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'#CC0000'</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderColor: '#ffffff',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderWidth: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderRadius: 5</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>options: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>responsive: true,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>maintainAspectRatio: false,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>indexAxis: 'y',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>plugins: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>legend: { display: false },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tooltip: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>backgroundColor: '#000000',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>titleFont: { size: 16, weight: 'bold', family: 'Montserrat' },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>bodyFont: { size: 14, family: 'Inter' },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>padding: 15,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>cornerRadius: 8,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>displayColors: false,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scales: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>x: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>beginAtZero: true,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>max: 100,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>title: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>display: true,</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>text: 'Strategic Priority Score',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>font: { size: 14, family: 'Inter', weight: '600' },</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>color: '#334155'</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>grid: { color: '#e2e8f0' }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>y: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>ticks: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>font: { size: 14, weight: '600', family: 'Inter' },</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>color: '#334155'</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>grid: { display: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>createAccordions();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>createTimeline();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>switchTab('vision');<span class="Apple-converted-space"> </span></p>
+<p class="p1">});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
